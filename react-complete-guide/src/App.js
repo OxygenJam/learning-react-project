@@ -1,6 +1,14 @@
-import Expense from "./components/Expense";
+// Originally React is imported to all component files
+// as it is the package that deals with JSX syntax
 
-function App() {
+// import React from "react";
+
+import Expense from "./components/Expenses/Expense";
+
+// You can re-write function <functionname> () {} into const/let <functionname> = () => {}
+// e.g.
+// function App () {} becomes const App = () => {}
+const App = () => {
 	const expenses = [
 		{
 			id: "e1",
