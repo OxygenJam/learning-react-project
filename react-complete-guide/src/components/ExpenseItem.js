@@ -2,6 +2,7 @@
 
 // Only 1 root element in JSX
 import ExpenseDate from "./ExpenseDate";
+import Card from "./Card";
 import "./ExpenseItem.css";
 
 function ExpenseItem(props) {
@@ -9,13 +10,13 @@ function ExpenseItem(props) {
 	const expenseAmount = props.amount;
 
 	return (
-		<div className="expense-item">
+		<Card className="expense-item">
             <ExpenseDate date={props.date}/>
 			<div className="expense-item__description">
 				<h2>{expenseTitle}</h2>
 				<div className="expense-item__price">${expenseAmount}</div>
 			</div>
-		</div>
+		</Card>
 	);
 }
 
