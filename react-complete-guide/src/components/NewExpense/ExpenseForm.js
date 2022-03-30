@@ -49,31 +49,38 @@ const ExpenseForm = (props) => {
 	};
 
 	const submitHandler = (event) => {
+		// Prevents the request of being sent
+		// as such avoids page reloading upon page submission
+		event.preventDefault();
 
-        // Prevents the request of being sent
-        // as such avoids page reloading upon page submission
-        event.preventDefault();
+		const expenseData = {
+			title: enteredTitle,
+			amount: +enteredAmount,
+			date: new Date(enteredDate),
+		};
 
-        const expenseData = {
-            title: enteredTitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate)
-        };
+		console.log(expenseData);
 
-        console.log(expenseData);
+		props.onSaveExpenseData(expenseData);
+		setEnteredTitle("");
+		setEnteredAmount("");
+		setEnteredDate("");
+		props.onToggleAddExpense();
+	};
 
-        props.onSaveExpenseData(expenseData);
-        setEnteredTitle("");
-        setEnteredAmount("");
-        setEnteredDate("");
-    };
-    // Two way binding : able to listen for events and send value to the element
+	const cancelClickHandler = () => props.onToggleAddExpense();
+
+	// Two way binding : able to listen for events and send value to the element
 	return (
 		<form onSubmit={submitHandler}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Title</label>
-					<input type="text" onChange={titleChangeHandler} value={enteredTitle}/>
+					<input
+						type="text"
+						onChange={titleChangeHandler}
+						value={enteredTitle}
+					/>
 				</div>
 				<div className="new-expense__control">
 					<label>Amount</label>
@@ -82,21 +89,22 @@ const ExpenseForm = (props) => {
 						min="0.01"
 						step="0.01"
 						onChange={amountChangeHandler}
-                        value = {enteredAmount}
+						value={enteredAmount}
 					/>
 				</div>
 				<div className="new-expense__control">
 					<label>Date</label>
 					<input
 						type="date"
-						min="2022-03-29"
+						min="2020-01-01"
 						max="2023-12-31"
 						onChange={dateChangeHandler}
-                        value = {enteredDate}
+						value={enteredDate}
 					/>
 				</div>
 			</div>
 			<div className="new-expense__actions">
+				<button type="button" onClick={cancelClickHandler}>Cancel</button>
 				<button type="submit">Add Expense</button>
 			</div>
 		</form>

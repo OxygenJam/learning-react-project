@@ -9,7 +9,6 @@ import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
-
 	// Can only be called inside the component functions
 	const [title, setTitle] = useState(props.title);
 	// Returns an array the first is the state value, second is the function to access it
@@ -17,7 +16,7 @@ const ExpenseItem = (props) => {
 	// think of it [getter, setter]
 	// React checks is the useState is initially called, then sets the props.title
 	// if it isn't it re-uses the state value defined in the previous component function calls
-	
+
 	const expenseAmount = props.amount;
 
 	// recommended to name functions tied to event to end with Handler
@@ -27,13 +26,15 @@ const ExpenseItem = (props) => {
 	// }
 
 	return (
-		<Card className="expense-item">
-			<ExpenseDate date={props.date} />
-			<div className="expense-item__description">
-				<h2>{title}</h2>
-				<div className="expense-item__price">${expenseAmount}</div>
-			</div>
-		</Card>
+		<li>
+			<Card className="expense-item">
+				<ExpenseDate date={props.date} />
+				<div className="expense-item__description">
+					<h2>{title}</h2>
+					<div className="expense-item__price">${expenseAmount}</div>
+				</div>
+			</Card>
+		</li>
 	);
 };
 
