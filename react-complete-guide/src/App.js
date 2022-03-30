@@ -4,6 +4,7 @@
 // import React from "react";
 
 import Expense from "./components/Expenses/Expense";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 // You can re-write function <functionname> () {} into const/let <functionname> = () => {}
 // e.g.
@@ -31,9 +32,14 @@ const App = () => {
 		},
 	];
 
+	const addExpenseHandler = (expense) =>{
+		console.log("APP.JS");
+		console.log(expense);
+	}
+
 	return (
 		<div>
-			<h2>Let's get started!</h2>
+			<NewExpense onAddExpense = {addExpenseHandler} />
 			<Expense expenses={expenses}/>
 		</div>
 	);
